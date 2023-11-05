@@ -15,7 +15,11 @@ https://github.com/TonyGLL/golang-rest-api.git is the canonical Git repository.
 It is mirrored at https://github.com/TonyGLL/golang-rest-api.git.
 
 ## Run project
+
+
 ```
+docker-compose up -d --build db
+docker-compose up -d --build app
 go mod download
 go run .
 ```
