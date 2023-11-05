@@ -1,9 +1,12 @@
 package main
 
 import (
+	"log"
 	"math/rand"
+	"os"
 	"time"
 
+	"github.com/joho/godotenv"
 	"golang.org/x/crypto/bcrypt"
 )
 
@@ -58,4 +61,16 @@ func NewAccount(firstName, lastName, password string) (*Account, error) {
 
 func (a *Account) ValidatePassword(pw string) bool {
 	return bcrypt.CompareHashAndPassword([]byte(a.Password), []byte(pw)) == nil
+}
+
+func goDotEnvVariable(key string) string {
+
+	// load .env file
+	err := godotenv.Load(".env")
+
+	if err != nil {
+		log.Fatalf("Error loading .env file")
+	}
+
+	return os.Getenv(key)
 }
