@@ -1,0 +1,37 @@
+services:
+  app:
+    build:
+      context: $PWD
+      dockerfile: Dockerfile
+    image: gobank/api:0.0.1
+    container_name: gobank
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
+    networks:
+      - backend
+    depends_on:
+      - db
+
+  db:
+    container_name: gobank-postgres
+    restart: always
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: gobank
+      POSTGRES_DB: gobank
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    networks:
+      - backend
+    ports:
+      - "5432:5432"
+
+volumes:
+  db_data:
+
+networks:
+  backend:
+    driver: bridge
