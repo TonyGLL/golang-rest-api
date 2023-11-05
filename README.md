@@ -16,7 +16,6 @@ It is mirrored at https://github.com/TonyGLL/golang-rest-api.git.
 
 ## Run project
 ```
-go mod init gobank
 go mod download
 go run .
 ```
