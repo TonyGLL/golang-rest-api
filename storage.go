@@ -21,7 +21,7 @@ type PostgresStore struct {
 }
 
 func NewPostgresStore() (*PostgresStore, error) {
-	connStr := "postgres://postgres:gobank@localhost/gobank?sslmode=disable"
+	connStr := "postgres://postgres:gobank@gobank-postgres/gobank?sslmode=disable"
 	db, err := sql.Open("postgres", connStr)
 
 	if err != nil {
