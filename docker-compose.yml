@@ -3,8 +3,9 @@ services:
     build:
       context: $PWD
       dockerfile: Dockerfile
-    image: gobank/api:0.0.1
+    image: gobank/api:0.0.2
     container_name: gobank
+    restart: always
     ports:
       - "3000:3000"
     volumes:
